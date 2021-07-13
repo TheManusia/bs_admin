@@ -1,12 +1,12 @@
 import 'package:bs_admin/routes.dart';
 import 'package:bs_admin/routes/home_route.dart';
+import 'package:bs_admin/routes/masters/product_route.dart';
 import 'package:bs_admin/routes/masters/type_route.dart';
 import 'package:bs_admin/views/skins/layout/sidebar-menus-child.dart';
 import 'package:bs_admin/views/skins/layout/sidebar-menus-item.dart';
 import 'package:flutter/material.dart';
 
 class SidebarMenus extends StatefulWidget {
-
   const SidebarMenus({
     Key? key,
     this.menuKey,
@@ -24,7 +24,8 @@ class _SidebarMenusState extends State<SidebarMenus> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scrollbar(child: SingleChildScrollView(
+      child: Scrollbar(
+          child: SingleChildScrollView(
         child: Column(
           children: [
             SidebarMenuItem(
@@ -42,7 +43,7 @@ class _SidebarMenusState extends State<SidebarMenus> {
               onPressed: () => Routes.redirect(context, HomeRoute.homeSession),
             ),
             SidebarMenuItem(
-              active: [TypeRoute.routeKey].contains(widget.menuKey),
+              active: [TypeRoute.routeKey, ProductRoute.routeKey].contains(widget.menuKey),
               icon: Icons.dashboard_rounded,
               menuKey: 'master',
               label: 'Masters',
@@ -52,20 +53,12 @@ class _SidebarMenusState extends State<SidebarMenus> {
                   label: 'Types',
                   menuKey: TypeRoute.routeKey,
                   onPressed: () => Routes.redirect(context, TypeRoute.user),
-                  children: [
-                    SidebarMenuChild(
-                      active: TypeRoute.routeKey == widget.menuKey,
-                      label: 'Types 1.1',
-                      menuKey: TypeRoute.routeKey,
-                      onPressed: () => Routes.redirect(context, TypeRoute.user),
-                    )
-                  ],
                 ),
                 SidebarMenuChild(
-                  active: TypeRoute.routeKey == widget.menuKey,
-                  label: 'Types',
-                  menuKey: TypeRoute.routeKey,
-                  onPressed: () => Routes.redirect(context, TypeRoute.user),
+                  active: ProductRoute.routeKey == widget.menuKey,
+                  label: 'Product',
+                  menuKey: ProductRoute.routeKey,
+                  onPressed: () => Routes.redirect(context, ProductRoute.product),
                 )
               ],
             ),

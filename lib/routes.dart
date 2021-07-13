@@ -1,5 +1,6 @@
 import 'package:bs_admin/routes/home_route.dart';
 import 'package:bs_admin/routes/login_route.dart';
+import 'package:bs_admin/routes/masters/product_route.dart';
 import 'package:bs_admin/routes/masters/type_route.dart';
 import 'package:bs_admin/views/errors/page_not_found.dart';
 import 'package:fluro/fluro.dart';
@@ -18,6 +19,8 @@ class Routes  {
     HomeRoute.routes(this);
 
     TypeRoute.routes(this);
+
+    ProductRoute.routes(this);
 
     router.notFoundHandler = Handler(
       handlerFunc: (context, parameters) => PageNotFoundView(),
