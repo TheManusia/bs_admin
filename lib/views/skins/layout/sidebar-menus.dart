@@ -43,7 +43,8 @@ class _SidebarMenusState extends State<SidebarMenus> {
               onPressed: () => Routes.redirect(context, HomeRoute.homeSession),
             ),
             SidebarMenuItem(
-              active: [TypeRoute.routeKey, ProductRoute.routeKey].contains(widget.menuKey),
+              active: [TypeRoute.routeKey, ProductRoute.routeKey]
+                  .contains(widget.menuKey),
               icon: Icons.dashboard_rounded,
               menuKey: 'master',
               label: 'Masters',
@@ -58,7 +59,8 @@ class _SidebarMenusState extends State<SidebarMenus> {
                   active: ProductRoute.routeKey == widget.menuKey,
                   label: 'Product',
                   menuKey: ProductRoute.routeKey,
-                  onPressed: () => Routes.redirect(context, ProductRoute.product),
+                  onPressed: () =>
+                      Routes.redirect(context, ProductRoute.product),
                 )
               ],
             ),

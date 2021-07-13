@@ -6,7 +6,6 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatelessWidget {
-
   const Wrapper({
     Key? key,
     this.title,
@@ -29,13 +28,17 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: BreakPoint.isMobile(context) ? SkinSidebar(menuKey: menuKey, shadow: false) : null,
+      drawer: BreakPoint.isMobile(context)
+          ? SkinSidebar(menuKey: menuKey, shadow: false)
+          : null,
       body: Container(
         child: Row(
           children: [
-            BreakPoint.isDesktop(context)
-                || BreakPoint.isTablet(context) ? SkinSidebar(menuKey: menuKey) : Container(),
-            Expanded(child: Container(
+            BreakPoint.isDesktop(context) || BreakPoint.isTablet(context)
+                ? SkinSidebar(menuKey: menuKey)
+                : Container(),
+            Expanded(
+                child: Container(
               child: Column(
                 verticalDirection: VerticalDirection.up,
                 children: [
@@ -54,5 +57,4 @@ class Wrapper extends StatelessWidget {
       ),
     );
   }
-
 }

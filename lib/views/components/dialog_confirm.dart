@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 enum DialogConfirmOption { YES_OPTION, NO_OPTION }
 
 class DialogConfirm extends StatelessWidget {
-
   const DialogConfirm({
     this.title = 'Konfirmasi Hapus',
     this.message = 'Apakah anda yakin?',
@@ -31,36 +30,40 @@ class DialogConfirm extends StatelessWidget {
         child: BsModalContent(
           children: [
             BsModalContainer(title: Text(title), closeButton: true),
-            BsModalContainer(child: Column(
+            BsModalContainer(
+                child: Column(
               children: [
                 Text(message),
               ],
             )),
             BsModalContainer(
-              mainAxisAlignment: MainAxisAlignment.end,
-              actions: [
-                BsButton(
-                  disabled: disabled,
-                  margin: EdgeInsets.only(right: 5.0),
-                  label: Text(DBText.buttonModalCancel),
-                  prefixIcon: DBIcon.buttonModalCancel,
-                  style: BsButtonStyle.danger,
-                  size: BsButtonSize.btnSm,
-                  onPressed: () {
-                    Navigator.pop(context);
-                    onPressed(DialogConfirmOption.NO_OPTION);
-                  },
-                ),
-                BsButton(
-                  disabled: disabled,
-                  label: Text(disabled ? DBText.buttonProcessing : DBText.buttonModalDelete),
-                  prefixIcon: disabled ? DBIcon.buttonProcessing : DBIcon.buttonDelete,
-                  style: BsButtonStyle.primary,
-                  size: BsButtonSize.btnSm,
-                  onPressed: () => onPressed(DialogConfirmOption.YES_OPTION),
-                ),
-              ]
-            )
+                mainAxisAlignment: MainAxisAlignment.end,
+                actions: [
+                  BsButton(
+                    disabled: disabled,
+                    margin: EdgeInsets.only(right: 5.0),
+                    label: Text(DBText.buttonModalCancel),
+                    prefixIcon: DBIcon.buttonModalCancel,
+                    style: BsButtonStyle.danger,
+                    size: BsButtonSize.btnSm,
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onPressed(DialogConfirmOption.NO_OPTION);
+                    },
+                  ),
+                  BsButton(
+                    disabled: disabled,
+                    label: Text(disabled
+                        ? DBText.buttonProcessing
+                        : DBText.buttonModalDelete),
+                    prefixIcon: disabled
+                        ? DBIcon.buttonProcessing
+                        : DBIcon.buttonDelete,
+                    style: BsButtonStyle.primary,
+                    size: BsButtonSize.btnSm,
+                    onPressed: () => onPressed(DialogConfirmOption.YES_OPTION),
+                  ),
+                ])
           ],
         ),
       ),

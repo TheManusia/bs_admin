@@ -2,7 +2,6 @@ import 'package:bs_admin/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class TrenValue {
-
   const TrenValue(this.value, this.icon);
 
   final String value;
@@ -11,7 +10,6 @@ class TrenValue {
 }
 
 class DashboardPanel extends StatefulWidget {
-
   const DashboardPanel({
     Key? key,
     required this.icon,
@@ -47,23 +45,22 @@ class _DashboardPanelState extends State<DashboardPanel> {
       margin: widget.margin,
       padding: widget.padding,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5.0),
-        boxShadow: [
-          Styles.shadowRegular
-        ]
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [Styles.shadowRegular]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.only(right: 10.0),
-            child: Icon(widget.icon,
+            child: Icon(
+              widget.icon,
               size: 55.0,
             ),
           ),
-          Expanded(child: Container(
+          Expanded(
+              child: Container(
             child: Stack(
               clipBehavior: Clip.none,
               children: [
@@ -75,46 +72,43 @@ class _DashboardPanelState extends State<DashboardPanel> {
                       children: [
                         Container(
                           padding: EdgeInsets.all(5.0),
-                          child: Text(widget.value,
+                          child: Text(
+                            widget.value,
                             style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold
-                            ),
+                                fontSize: 18.0, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-                      child: Text(widget.title,
+                      child: Text(
+                        widget.title,
                         style: TextStyle(
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.normal
-                        ),
+                            fontSize: 12.0, fontWeight: FontWeight.normal),
                       ),
                     )
                   ],
                 ),
-                widget.trenValue == null ? Container() : Positioned(
-                  child: Container(
-                    alignment: Alignment.bottomLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(widget.trenValue!.icon,
-                          size: 12.0,
-                          color: Colors.green
-                        ),
-                        Text(widget.trenValue!.value,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.green
+                widget.trenValue == null
+                    ? Container()
+                    : Positioned(
+                        child: Container(
+                          alignment: Alignment.bottomLeft,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(widget.trenValue!.icon,
+                                  size: 12.0, color: Colors.green),
+                              Text(
+                                widget.trenValue!.value,
+                                style: TextStyle(
+                                    fontSize: 12.0, color: Colors.green),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                )
+                      )
               ],
             ),
           ))

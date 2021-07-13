@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class HoverDecoration {
-
   const HoverDecoration({
     this.backgroundColor = Colors.blueAccent,
     this.splashColor = const Color(0xff22457f),

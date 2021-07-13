@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SidebarMenuItem extends StatefulWidget {
-
   const SidebarMenuItem({
     Key? key,
     required this.icon,
@@ -35,7 +34,6 @@ class SidebarMenuItem extends StatefulWidget {
 }
 
 class _SidebarMenuItem extends State<SidebarMenuItem> {
-
   GlobalKey<State> _keyContainer = GlobalKey<State>();
   bool _onHover = false;
 
@@ -59,17 +57,17 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
   }
 
   void _onFocus() {
-    if (_focusNode.hasFocus) open();
-    else if(!_focusNode.hasFocus) close();
+    if (_focusNode.hasFocus)
+      open();
+    else if (!_focusNode.hasFocus) close();
   }
 
   void _onKeyPressed(RawKeyEvent event) {
-    if(event.logicalKey == LogicalKeyboardKey.escape)
-      close();
+    if (event.logicalKey == LogicalKeyboardKey.escape) close();
   }
 
   void _updateState(VoidCallback function) {
-    if(mounted)
+    if (mounted)
       setState(() {
         function();
       });
@@ -78,17 +76,19 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
   void open() {
     UtilsOverlay.removeAll();
 
-    UtilsOverlayEntry overlayEntry = UtilsOverlay.add(OverlayEntry(
-      builder: (context) => SidebarMenuChildWrapper(
-        containerKey: _keyContainer,
-        layerLink: _link,
-        children: widget.children,
-      ),
-    ), () => _updateState(() {
-      _overlayOpen = false;
-      _utils.setActive(false);
-    }));
-    
+    UtilsOverlayEntry overlayEntry = UtilsOverlay.add(
+        OverlayEntry(
+          builder: (context) => SidebarMenuChildWrapper(
+            containerKey: _keyContainer,
+            layerLink: _link,
+            children: widget.children,
+          ),
+        ),
+        () => _updateState(() {
+              _overlayOpen = false;
+              _utils.setActive(false);
+            }));
+
     Overlay.of(context)!.insert(overlayEntry.overlayEntry);
     FocusScope.of(context).requestFocus(_focusNode);
 
@@ -109,11 +109,9 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
 
   @override
   Widget build(BuildContext context) {
-
     Widget child = screenDesktop();
 
-    if(BreakPoint.isTablet(context))
-      child = screenTablet();
+    if (BreakPoint.isTablet(context)) child = screenTablet();
 
     return child;
   }
@@ -131,46 +129,58 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
                 child: Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: _onHover || _utils.active ? Colors.blueAccent : null,
-                    borderRadius: BorderRadius.circular(5.0)
-                  ),
+                      color:
+                          _onHover || _utils.active ? Colors.blueAccent : null,
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Row(
                     children: [
                       Container(
                         margin: EdgeInsets.only(right: 10.0),
-                        child: Icon(widget.icon,
+                        child: Icon(
+                          widget.icon,
                           size: 18.0,
-                          color: _onHover || _utils.active ? Colors.white : Color(0xff7f7f7f),
+                          color: _onHover || _utils.active
+                              ? Colors.white
+                              : Color(0xff7f7f7f),
                         ),
                       ),
-                      Expanded(child: Container(
+                      Expanded(
+                          child: Container(
                         margin: EdgeInsets.only(right: 10.0),
-                        child: Text(widget.label,
+                        child: Text(
+                          widget.label,
                           style: TextStyle(
-                            color: _onHover || _utils.active ? Colors.white : Color(0xff7f7f7f),
+                            color: _onHover || _utils.active
+                                ? Colors.white
+                                : Color(0xff7f7f7f),
                           ),
                         ),
                       )),
-                      widget.children.length == 0 ? Container() : Container(
-                        child: Icon(_utils.active ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_right_rounded,
-                          size: 18.0,
-                          color: _onHover || _utils.active ? Colors.white : Color(0xff7f7f7f),
-                        ),
-                      )
+                      widget.children.length == 0
+                          ? Container()
+                          : Container(
+                              child: Icon(
+                                _utils.active
+                                    ? Icons.keyboard_arrow_down_rounded
+                                    : Icons.keyboard_arrow_right_rounded,
+                                size: 18.0,
+                                color: _onHover || _utils.active
+                                    ? Colors.white
+                                    : Color(0xff7f7f7f),
+                              ),
+                            )
                     ],
                   ),
                 ),
                 onTap: () {
                   UtilsMenus.updateAll();
 
-                  if(widget.children.length > 0)
+                  if (widget.children.length > 0)
                     _updateState(() => _utils.setActive(true));
-
-                  else if(widget.onPressed != null) {
-                    if(BreakPoint.isMobile(context))
+                  else if (widget.onPressed != null) {
+                    if (BreakPoint.isMobile(context))
                       Navigator.of(context);
-
-                    else if(BreakPoint.isTablet(context))
+                    else if (BreakPoint.isTablet(context))
                       UtilsOverlay.removeAll();
 
                     widget.onPressed!();
@@ -184,18 +194,20 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
               color: Colors.transparent,
             ),
           ),
-          widget.children.length == 0 ? Container() : Container(
-            margin: EdgeInsets.only(left: 5.0),
-            child: Opacity(
-              opacity: _utils.active ? 1 : 0,
-              child: Container(
-                height: !_utils.active ? 0 : null,
-                child: Column(
-                  children: widget.children,
-                ),
-              ),
-            ),
-          )
+          widget.children.length == 0
+              ? Container()
+              : Container(
+                  margin: EdgeInsets.only(left: 5.0),
+                  child: Opacity(
+                    opacity: _utils.active ? 1 : 0,
+                    child: Container(
+                      height: !_utils.active ? 0 : null,
+                      child: Column(
+                        children: widget.children,
+                      ),
+                    ),
+                  ),
+                )
         ],
       ),
     );
@@ -220,17 +232,21 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
                     child: Container(
                       padding: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
-                          color: _onHover || _utils.active ? Colors.blueAccent : null,
-                          borderRadius: BorderRadius.circular(5.0)
-                      ),
+                          color: _onHover || _utils.active
+                              ? Colors.blueAccent
+                              : null,
+                          borderRadius: BorderRadius.circular(5.0)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            child: Icon(widget.icon,
+                            child: Icon(
+                              widget.icon,
                               size: 30.0,
-                              color: _onHover || _utils.active ? Colors.white : Color(0xff7f7f7f),
+                              color: _onHover || _utils.active
+                                  ? Colors.white
+                                  : Color(0xff7f7f7f),
                             ),
                           ),
                         ],
@@ -239,14 +255,12 @@ class _SidebarMenuItem extends State<SidebarMenuItem> {
                     onTap: () {
                       UtilsMenus.updateAll();
 
-                      if(widget.children.length > 0 && !_overlayOpen)
+                      if (widget.children.length > 0 && !_overlayOpen)
                         open();
-
-                      else if(widget.children.length > 0 && _overlayOpen)
+                      else if (widget.children.length > 0 && _overlayOpen)
                         close();
-
-                      else if(widget.onPressed != null) {
-                        if(BreakPoint.isTablet(context))
+                      else if (widget.onPressed != null) {
+                        if (BreakPoint.isTablet(context))
                           UtilsOverlay.removeAll();
 
                         widget.onPressed!();

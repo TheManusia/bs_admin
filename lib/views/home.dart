@@ -12,7 +12,6 @@ class HomeView extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _HomeViewState();
   }
-
 }
 
 class _HomeViewState extends State<HomeView> {
@@ -21,7 +20,8 @@ class _HomeViewState extends State<HomeView> {
     return Wrapper(
       menuKey: HomeRoute.routeKey,
       title: 'Dashboard',
-      subTitle: 'Selamat datang di halaman dashboard testing loresm ipsum saja test',
+      subTitle:
+          'Selamat datang di halaman dashboard testing loresm ipsum saja test',
       breadcrumbs: [
         Breadcrumbs(label: 'Admin Page', icon: Icons.home, onPressed: () {}),
         Breadcrumbs(label: 'Dashboard'),
@@ -32,36 +32,36 @@ class _HomeViewState extends State<HomeView> {
             gutter: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
             children: [
               BsCol(
-                sizes: ColScreen.inDevice(mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
+                sizes: ColScreen.inDevice(
+                    mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
                 child: DashboardPanel(
-                  icon: Icons.info_outline_rounded,
-                  value: '20 M',
-                  title: 'Total Omzet'
-                ),
+                    icon: Icons.info_outline_rounded,
+                    value: '20 M',
+                    title: 'Total Omzet'),
               ),
               BsCol(
-                sizes: ColScreen.inDevice(mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
+                sizes: ColScreen.inDevice(
+                    mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
                 child: DashboardPanel(
-                  icon: Icons.info_outline_rounded,
-                  value: '20 M',
-                  title: 'Total Omzet'
-                ),
+                    icon: Icons.info_outline_rounded,
+                    value: '20 M',
+                    title: 'Total Omzet'),
               ),
               BsCol(
-                sizes: ColScreen.inDevice(mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
+                sizes: ColScreen.inDevice(
+                    mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
                 child: DashboardPanel(
-                  icon: Icons.info_outline_rounded,
-                  value: '20 M',
-                  title: 'Total Omzet'
-                ),
+                    icon: Icons.info_outline_rounded,
+                    value: '20 M',
+                    title: 'Total Omzet'),
               ),
               BsCol(
-                sizes: ColScreen.inDevice(mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
+                sizes: ColScreen.inDevice(
+                    mobile: Col.col_12, tablet: Col.col_6, desktop: Col.col_3),
                 child: DashboardPanel(
-                  icon: Icons.info_outline_rounded,
-                  value: '20 M',
-                  title: 'Total Omzet'
-                ),
+                    icon: Icons.info_outline_rounded,
+                    value: '20 M',
+                    title: 'Total Omzet'),
               ),
               BsCol(
                 sizes: ColScreen.all(Col.col_12),
@@ -79,5 +79,4 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
-
 }

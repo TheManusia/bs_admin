@@ -9,13 +9,11 @@ class SidebarProfile extends StatefulWidget {
 }
 
 class _SidebarProfileState extends State<SidebarProfile> {
-
   @override
   Widget build(BuildContext context) {
     Widget widget = screenDesktop();
 
-    if(BreakPoint.isTablet(context))
-      widget = screenTablet();
+    if (BreakPoint.isTablet(context)) widget = screenTablet();
 
     return widget;
   }
@@ -35,16 +33,18 @@ class _SidebarProfileState extends State<SidebarProfile> {
           ),
           Container(
             margin: EdgeInsets.only(bottom: 5.0),
-            child: Text('Bambang Sujatmiko', style: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.bold,
-            )),
+            child: Text('Bambang Sujatmiko',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                )),
           ),
-          Text('Superadmin', style: TextStyle(
-            fontSize: 12.0,
-            color: Colors.grey,
-            fontWeight: FontWeight.w100,
-          ))
+          Text('Superadmin',
+              style: TextStyle(
+                fontSize: 12.0,
+                color: Colors.grey,
+                fontWeight: FontWeight.w100,
+              ))
         ],
       ),
     );

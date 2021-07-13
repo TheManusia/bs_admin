@@ -1,7 +1,6 @@
 import 'package:bs_admin/helpers/helpers.dart';
 
 class TypeModel {
-
   int id;
   int parentid;
   String? typecd;
@@ -11,15 +10,15 @@ class TypeModel {
 
   Map<String, dynamic>? _parent;
 
-  TypeModel({
-    this.id = 0,
-    this.parentid = 0,
-    this.typecd,
-    this.typenm,
-    this.typeseq = 0,
-    this.description,
-    Map<String, dynamic>? parent
-  }) : _parent = parent;
+  TypeModel(
+      {this.id = 0,
+      this.parentid = 0,
+      this.typecd,
+      this.typenm,
+      this.typeseq = 0,
+      this.description,
+      Map<String, dynamic>? parent})
+      : _parent = parent;
 
   factory TypeModel.fromJson(Map<String, dynamic> map) {
     return TypeModel(
@@ -34,8 +33,7 @@ class TypeModel {
   }
 
   TypeModel get parent {
-    if(_parent == null)
-      return TypeModel();
+    if (_parent == null) return TypeModel();
 
     return TypeModel.fromJson(_parent!);
   }

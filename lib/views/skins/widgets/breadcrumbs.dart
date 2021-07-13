@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Breadcrumbs extends StatefulWidget {
-
   Breadcrumbs({
     required this.label,
     this.key,
@@ -26,11 +25,10 @@ class Breadcrumbs extends StatefulWidget {
 }
 
 class _BreadcrumbsState extends State<Breadcrumbs> {
-
   bool _onHover = false;
 
   void _updateState(VoidCallback function) {
-    if(mounted)
+    if (mounted)
       setState(() {
         function();
       });
@@ -42,19 +40,26 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
         child: InkWell(
           child: Row(
             children: [
-              widget.icon == null ? Container() : Container(
-                margin: EdgeInsets.only(right: 5.0),
-                child: Icon(widget.icon,
-                  color: widget.active || _onHover ? Colors.blue : Colors.black,
-                  size: 16.0,
-                ),
-              ),
+              widget.icon == null
+                  ? Container()
+                  : Container(
+                      margin: EdgeInsets.only(right: 5.0),
+                      child: Icon(
+                        widget.icon,
+                        color: widget.active || _onHover
+                            ? Colors.blue
+                            : Colors.black,
+                        size: 16.0,
+                      ),
+                    ),
               Container(
-                child: Text(widget.label,
+                child: Text(
+                  widget.label,
                   style: TextStyle(
                       fontSize: 14.0,
-                      color: widget.active || _onHover ? Colors.blue : Colors.black
-                  ),
+                      color: widget.active || _onHover
+                          ? Colors.blue
+                          : Colors.black),
                 ),
               )
             ],

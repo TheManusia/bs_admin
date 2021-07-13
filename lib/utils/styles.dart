@@ -2,22 +2,14 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Styles {
-
-  static const BoxShadow shadowRegular = BoxShadow(
-      color: Color(0xffd9d9d9),
-      spreadRadius: 4.0,
-      blurRadius: 12.0
-  );
+  static const BoxShadow shadowRegular =
+      BoxShadow(color: Color(0xffd9d9d9), spreadRadius: 4.0, blurRadius: 12.0);
 
   static const BsCardStyle boxCard = BsCardStyle(
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          boxShadow: [
-            Styles.shadowRegular
-          ]
-      )
-  );
+          boxShadow: [Styles.shadowRegular]));
 
   static const BsInputSize outlineBottomMd = BsInputSize(
       fontSize: 14.0,
@@ -25,8 +17,7 @@ class Styles {
       marginTop: 14.0,
       marginLeft: 5.0,
       transitionMarginTop: 10.0,
-      transitionMarginLeft: 0.0
-  );
+      transitionMarginLeft: 0.0);
 
   static Widget datatableLayout(_) {
     return Container();

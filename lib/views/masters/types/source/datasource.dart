@@ -8,6 +8,6 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-part 'typetext.dart';
-part 'typesource.dart';
 part 'formsource.dart';
+part 'typesource.dart';
+part 'typetext.dart';

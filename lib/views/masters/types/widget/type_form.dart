@@ -5,13 +5,9 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/cupertino.dart';
 
 class TypeFormModal extends StatefulWidget {
-
-  const TypeFormModal({
-    Key? key,
-    required this.presenter,
-    this.onClose,
-    this.onSubmit
-  }) : super(key: key);
+  const TypeFormModal(
+      {Key? key, required this.presenter, this.onClose, this.onSubmit})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -23,11 +19,9 @@ class TypeFormModal extends StatefulWidget {
   final VoidCallback? onClose;
 
   final VoidCallback? onSubmit;
-
 }
 
 class _TypeFormModalState extends State<TypeFormModal> {
-
   GlobalKey<FormState> _formState = GlobalKey<FormState>();
 
   late TypeForm _typeForm;
@@ -42,9 +36,7 @@ class _TypeFormModalState extends State<TypeFormModal> {
   }
 
   void updateState() {
-    if(mounted)
-      setState(() {
-      });
+    if (mounted) setState(() {});
   }
 
   @override
@@ -56,7 +48,9 @@ class _TypeFormModalState extends State<TypeFormModal> {
             key: _formState,
             child: BsModalContent(
               children: [
-                BsModalContainer(title: Text(DBText.formTitle(TypeText.title)), closeButton: true),
+                BsModalContainer(
+                    title: Text(DBText.formTitle(TypeText.title)),
+                    closeButton: true),
                 BsModalContainer(
                   child: Column(
                     children: [
@@ -80,28 +74,25 @@ class _TypeFormModalState extends State<TypeFormModal> {
                         size: BsButtonSize.btnMd,
                         onPressed: () {
                           Navigator.pop(context);
-                          if(widget.onClose != null)
-                            widget.onClose!();
+                          if (widget.onClose != null) widget.onClose!();
                         },
                       ),
                       BsButton(
                         disabled: widget.presenter.isLoading,
-                        label: Text(widget.presenter.isLoading ? DBText.buttonProcessing : DBText.buttonModalSave),
+                        label: Text(widget.presenter.isLoading
+                            ? DBText.buttonProcessing
+                            : DBText.buttonModalSave),
                         prefixIcon: DBIcon.buttonModalSave,
                         style: BsButtonStyle.primary,
                         size: BsButtonSize.btnMd,
                         onPressed: () {
-                          if(widget.onSubmit != null)
-                            widget.onSubmit!();
+                          if (widget.onSubmit != null) widget.onSubmit!();
                         },
                       ),
-                    ]
-                )
+                    ])
               ],
             ),
           ),
-        )
-    );
+        ));
   }
-
 }

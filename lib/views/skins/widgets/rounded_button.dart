@@ -2,7 +2,6 @@ import 'package:bs_admin/utils/config/hover_decoration.dart';
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatefulWidget {
-
   const RoundedButton({
     Key? key,
     required this.icon,
@@ -34,8 +33,7 @@ class RoundedButton extends StatefulWidget {
   }
 }
 
-class _RoundedButtonState extends State<RoundedButton>{
-
+class _RoundedButtonState extends State<RoundedButton> {
   bool _hovered = false;
 
   Duration _duration = Duration(milliseconds: 200);
@@ -44,9 +42,7 @@ class _RoundedButtonState extends State<RoundedButton>{
       ? widget.hoverDecoration.backgroundColor
       : widget.backgroundColor;
 
-  Color get _color => _hovered
-      ? widget.hoverDecoration.color
-      : widget.color;
+  Color get _color => _hovered ? widget.hoverDecoration.color : widget.color;
 
   @override
   void initState() {
@@ -54,7 +50,7 @@ class _RoundedButtonState extends State<RoundedButton>{
   }
 
   void _updateState(VoidCallback function) {
-    if(mounted)
+    if (mounted)
       setState(() {
         function();
       });
@@ -66,9 +62,7 @@ class _RoundedButtonState extends State<RoundedButton>{
       duration: _duration,
       margin: widget.margin,
       decoration: BoxDecoration(
-        color: _backgroundColor,
-        borderRadius: BorderRadius.circular(50.0)
-      ),
+          color: _backgroundColor, borderRadius: BorderRadius.circular(50.0)),
       child: Material(
         child: InkWell(
           borderRadius: BorderRadius.circular(50.0),
@@ -78,29 +72,29 @@ class _RoundedButtonState extends State<RoundedButton>{
               Container(
                 clipBehavior: Clip.none,
                 padding: EdgeInsets.all(8.0),
-                child: Icon(widget.icon,
+                child: Icon(
+                  widget.icon,
                   color: _color,
                   size: 18.0,
                 ),
               ),
-              widget.badge == null ? Container() : Positioned(
-                right: -5,
-                top: -5,
-                child: DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.white
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(5.0, 3.0, 5.0, 3.0),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    child: widget.badge,
-                  ),
-                ),
-              )
+              widget.badge == null
+                  ? Container()
+                  : Positioned(
+                      right: -5,
+                      top: -5,
+                      child: DefaultTextStyle(
+                        style: TextStyle(fontSize: 10.0, color: Colors.white),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(5.0, 3.0, 5.0, 3.0),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: widget.badge,
+                        ),
+                      ),
+                    )
             ],
           ),
           onTap: widget.onPressed,
@@ -109,11 +103,12 @@ class _RoundedButtonState extends State<RoundedButton>{
           }),
           splashColor: widget.hoverDecoration.splashColor,
           highlightColor: widget.hoverDecoration.highlightColor,
-          mouseCursor: widget.onPressed == null ? SystemMouseCursors.noDrop : SystemMouseCursors.click,
+          mouseCursor: widget.onPressed == null
+              ? SystemMouseCursors.noDrop
+              : SystemMouseCursors.click,
         ),
         color: Colors.transparent,
       ),
     );
   }
-
 }

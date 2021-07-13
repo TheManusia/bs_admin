@@ -8,5 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'src/session_view.dart';
+
 part 'src/session_utils.dart';
+
 part 'src/session_splash_screen.dart';

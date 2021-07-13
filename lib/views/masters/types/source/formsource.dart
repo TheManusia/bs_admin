@@ -1,7 +1,6 @@
 part of datasource;
 
 abstract class TypeFormSource {
-
   String typeid = '';
   late bool isLoading;
 
@@ -14,11 +13,7 @@ abstract class TypeFormSource {
 }
 
 class TypeForm {
-
-  TypeForm({
-    required this.context,
-    required this.presenter
-  });
+  TypeForm({required this.context, required this.presenter});
 
   final BuildContext context;
 
@@ -67,9 +62,7 @@ class TypeForm {
         controller: presenter.inputSequence,
         hintText: DBText.placeholder(TypeText.formSequence),
         keyboardType: TextInputType.number,
-        inputFormatters: [
-          FilteringTextInputFormatter.digitsOnly
-        ],
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       ),
     );
   }

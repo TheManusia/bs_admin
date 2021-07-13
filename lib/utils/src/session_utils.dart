@@ -1,14 +1,12 @@
 part of session;
 
 class SessionCode {
-
   static const String userid = 'tNsjQ';
   static const String fullname = 'Cv6O1';
   static const String sessionBAru = 'asda';
 }
 
 class SessionUtils {
-
   int? userid;
   String? fullname;
 
@@ -21,9 +19,8 @@ class SessionUtils {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return SessionUtils(
-      userid: prefs.getInt(SessionCode.userid),
-      fullname: prefs.getString(SessionCode.fullname)
-    );
+        userid: prefs.getInt(SessionCode.userid),
+        fullname: prefs.getString(SessionCode.fullname));
   }
 
   static Future setSession(SessionUtils session) async {

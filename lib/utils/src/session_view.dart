@@ -1,7 +1,6 @@
 part of session;
 
 class Session extends StatefulWidget {
-
   const Session({
     this.guest = false,
     required this.builder,
@@ -18,7 +17,6 @@ class Session extends StatefulWidget {
 }
 
 class _SessionState extends State<Session> {
-
   Widget? _child;
 
   bool _isLogged = false;
@@ -37,11 +35,9 @@ class _SessionState extends State<Session> {
     /* SESSION CHECK */
 
     /* Jika terdapat session dan bukan halaman guest maka login valid */
-    if(session.userid != null
-      && session.fullname != null) {
-
+    if (session.userid != null && session.fullname != null) {
       /* Jika bukan guest maka tampil halaman yang di request */
-      if(!widget.guest)
+      if (!widget.guest)
         pIsLogged = true;
 
       /* Jika guest maka redirect ke halaman awal terlebih dahulu */
@@ -50,7 +46,7 @@ class _SessionState extends State<Session> {
     }
 
     /* Jika halaman guest maka login valid dan akan diarahkan ke halaman yg direquest */
-    else if(widget.guest) {
+    else if (widget.guest) {
       pIsLogged = true;
     }
 
@@ -68,10 +64,12 @@ class _SessionState extends State<Session> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return _child == null ? SessionSplashScreen()
-        : _isLogged ? _child! : PageNotFoundView();
+    return _child == null
+        ? SessionSplashScreen()
+        : _isLogged
+            ? _child!
+            : PageNotFoundView();
   }
 }

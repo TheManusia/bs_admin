@@ -1,7 +1,6 @@
 part of datasource;
 
 class TypeText {
-
   static String title = 'Tipe';
   static String subTitle = 'Data master tipe';
 

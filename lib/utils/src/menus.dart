@@ -1,11 +1,11 @@
 part of utils;
 
 class UtilsMenus {
-
   static List<UtilsMenusKey> menus = [];
 
   static UtilsMenusKey add(VoidCallback updateState) {
-    UtilsMenusKey utilsMenusKey = UtilsMenusKey(menus.length, false, updateState);
+    UtilsMenusKey utilsMenusKey =
+        UtilsMenusKey(menus.length, false, updateState);
     menus.add(utilsMenusKey);
 
     return utilsMenusKey;
@@ -23,9 +23,8 @@ class UtilsMenus {
 }
 
 class UtilsMenusKey {
-
   UtilsMenusKey(this.index, this.active, VoidCallback updateState)
-    : _updateState = updateState;
+      : _updateState = updateState;
 
   final int index;
 

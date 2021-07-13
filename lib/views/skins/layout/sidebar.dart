@@ -5,7 +5,6 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/material.dart';
 
 class SkinSidebar extends StatelessWidget {
-
   const SkinSidebar({
     Key? key,
     this.shadow = true,
@@ -18,11 +17,9 @@ class SkinSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Widget widget = screenDesktop();
 
-    if(BreakPoint.isTablet(context))
-      widget = screenTablet();
+    if (BreakPoint.isTablet(context)) widget = screenTablet();
 
     return widget;
   }
@@ -32,9 +29,8 @@ class SkinSidebar extends StatelessWidget {
       width: 250,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: !shadow ? [] : [Styles.shadowRegular]
-        ),
+            color: Colors.white,
+            boxShadow: !shadow ? [] : [Styles.shadowRegular]),
         child: Column(
           children: [
             Container(
@@ -44,32 +40,33 @@ class SkinSidebar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(child: Container(
-                      padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                      child: Text('ADMIN TEMPLATE',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                      )
-                  )),
+                  Expanded(
+                      child: Container(
+                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                          child: Text(
+                            'ADMIN TEMPLATE',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18.0),
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.left,
+                          ))),
                 ],
               ),
             ),
             SidebarProfile(),
-            Expanded(child: Scrollbar(
+            Expanded(
+                child: Scrollbar(
               child: SingleChildScrollView(
                 child: SidebarMenus(menuKey: menuKey),
               ),
             )),
             Container(
               padding: EdgeInsets.all(5.0),
-              child: Text('Version 1.0.0', style: TextStyle(
-                color: Colors.black.withOpacity(0.8),
-                fontSize: 12.0,
-              )),
+              child: Text('Version 1.0.0',
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.8),
+                    fontSize: 12.0,
+                  )),
             )
           ],
         ),
@@ -81,30 +78,29 @@ class SkinSidebar extends StatelessWidget {
     return Container(
       width: 80,
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: !shadow ? [] : [Styles.shadowRegular]
-      ),
+          color: Colors.white,
+          boxShadow: !shadow ? [] : [Styles.shadowRegular]),
       child: Column(
         children: [
           Container(
             child: Row(
               children: [
-                Expanded(child: Container(
-                  padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                  child: Text('ADMIN TEMPLATE',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.left,
-                  )
-                )),
+                Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                        child: Text(
+                          'ADMIN TEMPLATE',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18.0),
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                        ))),
               ],
             ),
           ),
           SidebarProfile(),
-          Expanded(child: Scrollbar(
+          Expanded(
+              child: Scrollbar(
             child: SingleChildScrollView(
               child: SidebarMenus(menuKey: menuKey),
             ),

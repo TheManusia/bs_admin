@@ -4,7 +4,6 @@ import 'package:bs_admin/routes.dart';
 import 'package:bs_admin/routes/home_route.dart';
 import 'package:bs_admin/routes/masters/type_route.dart';
 import 'package:bs_admin/utils/styles.dart';
-import 'package:bs_admin/utils/utils.dart';
 import 'package:bs_admin/views/masters/types/source/datasource.dart';
 import 'package:bs_admin/views/skins/widgets/breadcrumbs.dart';
 import 'package:bs_admin/views/skins/wrapper.dart';
@@ -19,7 +18,6 @@ class TypeView extends StatefulWidget {
 }
 
 class _TypeViewState extends State<TypeView> implements TypePresenterContract {
-
   late TypePresenter _presenter;
 
   bool isLoading = false;
@@ -32,8 +30,7 @@ class _TypeViewState extends State<TypeView> implements TypePresenterContract {
 
   @override
   void updateState() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
@@ -43,8 +40,10 @@ class _TypeViewState extends State<TypeView> implements TypePresenterContract {
       title: TypeText.title,
       subTitle: TypeText.subTitle,
       breadcrumbs: [
-        Breadcrumbs(label: DBText.home, icon: Icons.home, onPressed: () =>
-            Routes.redirect(context, HomeRoute.home)),
+        Breadcrumbs(
+            label: DBText.home,
+            icon: Icons.home,
+            onPressed: () => Routes.redirect(context, HomeRoute.home)),
         Breadcrumbs(label: DBText.master),
         Breadcrumbs(label: TypeText.title),
       ],
@@ -55,21 +54,25 @@ class _TypeViewState extends State<TypeView> implements TypePresenterContract {
             BsCard(
               style: Styles.boxCard,
               children: [
-                BsCardContainer(title: Text(DBText.masterTitle(TypeText.title)), actions: [
-                  BsButton(
-                    label: Text(DBText.buttonAdd),
-                    prefixIcon: DBIcon.buttonAdd,
-                    style: BsButtonStyle.primary,
-                    onPressed: () => _presenter.add(context),
-                  )
-                ]),
-                BsCardContainer(child: Column(
+                BsCardContainer(
+                    title: Text(DBText.masterTitle(TypeText.title)),
+                    actions: [
+                      BsButton(
+                        label: Text(DBText.buttonAdd),
+                        prefixIcon: DBIcon.buttonAdd,
+                        style: BsButtonStyle.primary,
+                        onPressed: () => _presenter.add(context),
+                      )
+                    ]),
+                BsCardContainer(
+                    child: Column(
                   children: [
                     BsDatatable(
                       title: Text(DBText.dataTitle(TypeText.title)),
                       source: _presenter.typeSource,
                       columns: TypeDataSource.columns,
-                      serverSide: (params) => _presenter.datatables(context, params),
+                      serverSide: (params) =>
+                          _presenter.datatables(context, params),
                       pagination: BsPagination.simplyButtons,
                     )
                   ],
