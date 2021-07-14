@@ -4,7 +4,7 @@ abstract class ProductFormSource {
   String typeid = '';
   late bool isLoading;
 
-  BsSelectBoxController selectType = BsSelectBoxController();
+  BsSelectBoxController selectTypeId = BsSelectBoxController();
 
   TextEditingController inputCode = TextEditingController();
   TextEditingController inputName = TextEditingController();
@@ -25,7 +25,7 @@ class ProductForm {
         searchable: true,
         disabled: presenter.isLoading,
         hintText: DBText.placeholderSelect(ProductText.formType),
-        selectBoxController: presenter.selectType,
+        selectBoxController: presenter.selectTypeId,
         serverSide: (params) => selectType(params, typeid: presenter.typeid),
       ),
     );

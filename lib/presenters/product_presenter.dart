@@ -1,3 +1,4 @@
+import 'package:bs_admin/helpers/helpers.dart';
 import 'package:bs_admin/models/product_model.dart';
 import 'package:bs_admin/services/product_service.dart';
 import 'package:bs_admin/utils/utils.dart';
@@ -46,7 +47,24 @@ class ProductPresenter extends ProductFormSource {
             ));
   }
 
-  void edit(BuildContext context, int productid) {}
+  void edit(BuildContext context, int productid) {
+    resetData();
+    setLoading(true);
+
+    showDialog(
+        context: context,
+        builder: (context) => ProductFormModal(
+              key: _formState,
+              presenter: this,
+              onSubmit: () => update(context, productid),
+            ));
+
+    productService.show(productid).then((value) {
+      if (value.result!) {
+        setData(ProductModel.fromJson(value.data));
+      }
+    });
+  }
 
   void delete(BuildContext context, int productid) {}
 
@@ -60,7 +78,7 @@ class ProductPresenter extends ProductFormSource {
 
   void resetData() {
     typeid = '';
-    selectType.clear();
+    selectTypeId.clear();
     inputCode.clear();
     inputName.clear();
     inputDescription.clear();
@@ -77,14 +95,42 @@ class ProductPresenter extends ProductFormSource {
     });
   }
 
+  update(BuildContext context, int productid) {
+    setLoading(true);
+    productService.update(productid, getDatas()).then((value) {
+      setLoading(false);
+
+      if (value.result!) {
+        Navigator.pop(context);
+        productSource.controller.reload();
+      }
+    });
+  }
+
   Map<String, String> getDatas() {
     return {
-      'typeid': selectType.getSelectedAsString() != ''
-          ? selectType.getSelectedAsString()
+      'typeid': selectTypeId.getSelectedAsString() != ''
+          ? selectTypeId.getSelectedAsString()
           : '0',
       'productcd': inputCode.text,
       'productnm': inputName.text,
       'description': inputDescription.text,
     };
+  }
+
+  void setData(ProductModel product) {
+    productModel = product;
+
+    if (productModel.typeid != 0)
+      selectTypeId.setSelected(BsSelectBoxOption(
+          value: productModel.typeid,
+          text: Text(parseString(productModel.type.typenm))));
+
+    typeid = parseString(productModel.id);
+    inputCode.text = parseString(productModel.productcd);
+    inputName.text = parseString(productModel.productnm);
+    inputDescription.text = parseString(productModel.description);
+
+    setLoading(false);
   }
 }
