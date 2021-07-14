@@ -4,7 +4,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
 class LoginRoute {
-
   static String routeKey = 'login';
   static String login = '/$routeKey';
 
@@ -15,5 +14,4 @@ class LoginRoute {
       },
     ));
   }
-
 }

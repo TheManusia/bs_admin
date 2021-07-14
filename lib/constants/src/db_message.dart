@@ -1,5 +1,3 @@
 part of constants;
 
-class DBMessage {
-
-}
+class DBMessage {}

@@ -6,8 +6,7 @@ import 'package:bs_admin/views/errors/page_not_found.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 
-class Routes  {
-
+class Routes {
   static void redirect(BuildContext context, String path) =>
       router.navigateTo(context, path, transition: TransitionType.fadeIn);
 
@@ -27,11 +26,13 @@ class Routes  {
     );
   }
 
-  Route<dynamic>? generator(routeSettings) =>
-      router.generator(routeSettings);
+  Route<dynamic>? generator(routeSettings) => router.generator(routeSettings);
 
-  void define(String routePath, {
+  void define(
+    String routePath, {
     required Handler? handler,
     TransitionType? transitionType,
-  }) => router.define(routePath, handler: handler, transitionType: TransitionType.fadeIn);
+  }) =>
+      router.define(routePath,
+          handler: handler, transitionType: TransitionType.fadeIn);
 }

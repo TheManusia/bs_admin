@@ -8,7 +8,5 @@ import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/material.dart';
 
 part 'formsource.dart';
-
 part 'productsource.dart';
-
 part 'producttext.dart';

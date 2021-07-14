@@ -21,17 +21,16 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> map) {
     return ProductModel(
-      id: parseInt(map['id']),
-      typeid: parseInt(map['typeid']),
-      productcd: parseString(map['productcd']),
-      productnm: parseString(map['productnm']),
-      description: parseString(map['description']),
-      type: map['type']
-    );
+        id: parseInt(map['id']),
+        typeid: parseInt(map['typeid']),
+        productcd: parseString(map['productcd']),
+        productnm: parseString(map['productnm']),
+        description: parseString(map['description']),
+        type: map['type']);
   }
 
   TypeModel get type {
-    if(_type == null) return TypeModel();
+    if (_type == null) return TypeModel();
 
     return TypeModel.fromJson(_type!);
   }

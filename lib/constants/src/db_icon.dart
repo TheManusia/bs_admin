@@ -1,7 +1,6 @@
 part of constants;
 
 class DBIcon {
-
   static IconData form = Icons.attach_file;
 
   static IconData buttonView = Icons.pageview;

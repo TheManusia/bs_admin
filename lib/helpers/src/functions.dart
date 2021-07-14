@@ -1,7 +1,11 @@
 part of helpers;
 
 String notNull(dynamic value, {String? nullValue}) {
-  return value == null ? nullValue != null ? nullValue : '' : value.toString();
+  return value == null
+      ? nullValue != null
+          ? nullValue
+          : ''
+      : value.toString();
 }
 
 double parseDouble(dynamic value, {int decimal = 2}) {

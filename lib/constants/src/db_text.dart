@@ -1,7 +1,6 @@
 part of constants;
 
 class DBText {
-
   static const String tableCellNo = 'No';
   static const String tableCellAction = 'Aksi';
 
