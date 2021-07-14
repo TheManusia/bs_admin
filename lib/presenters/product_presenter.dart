@@ -2,6 +2,7 @@ import 'package:bs_admin/helpers/helpers.dart';
 import 'package:bs_admin/models/product_model.dart';
 import 'package:bs_admin/services/product_service.dart';
 import 'package:bs_admin/utils/utils.dart';
+import 'package:bs_admin/views/components/dialog_confirm.dart';
 import 'package:bs_admin/views/masters/product/source/datasource.dart';
 import 'package:bs_admin/views/masters/product/widget/product_form.dart';
 import 'package:bs_flutter/bs_flutter.dart';
@@ -66,7 +67,19 @@ class ProductPresenter extends ProductFormSource {
     });
   }
 
-  void delete(BuildContext context, int productid) {}
+  void delete(BuildContext context, int productid) {
+    showDialog(
+        context: context,
+        builder: (context) => DialogConfirm(onPressed: (value) {
+              if (value == DialogConfirmOption.YES_OPTION) {
+                productService.delete(productid).then((value) {
+                  setLoading(false);
+                  Navigator.pop(context);
+                  productSource.controller.reload();
+                });
+              }
+            }));
+  }
 
   void setLoading(bool bool) {
     isLoading = bool;
