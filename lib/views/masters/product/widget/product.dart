@@ -62,7 +62,7 @@ class _ProductViewState extends State<ProductView>
                         label: Text(DBText.buttonAdd),
                         prefixIcon: DBIcon.buttonAdd,
                         style: BsButtonStyle.primary,
-                        onPressed: () {},
+                        onPressed: () => _presenter.add(context),
                       )
                     ]),
                 BsCardContainer(
