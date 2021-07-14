@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 abstract class TypePresenterContract implements ViewContract {}
 
 class TypePresenter extends TypeFormSource {
-
   GlobalKey<State> _formState = GlobalKey<State>();
 
   final TypePresenterContract viewContract;
@@ -27,14 +26,15 @@ class TypePresenter extends TypeFormSource {
     isLoading = loading;
     viewContract.updateState();
 
-    if(_formState.currentState != null)
-      _formState.currentState!.setState(() {
-      });
+    if (_formState.currentState != null)
+      _formState.currentState!.setState(() {});
   }
 
   Map<String, String> getDatas() {
     return {
-      'parentid': selectParent.getSelectedAsString() != '' ? selectParent.getSelectedAsString() : '0',
+      'parentid': selectParent.getSelectedAsString() != ''
+          ? selectParent.getSelectedAsString()
+          : '0',
       'typecd': inputCode.text,
       'typenm': inputName.text,
       'typeseq': inputSequence.text,
@@ -45,8 +45,10 @@ class TypePresenter extends TypeFormSource {
   void setData(TypeModel type) {
     typeModel = type;
 
-    if(typeModel.parentid != 0)
-      selectParent.setSelected(BsSelectBoxOption(value: typeModel.parentid, text: Text(parseString(typeModel.parent.typenm))));
+    if (typeModel.parentid != 0)
+      selectParent.setSelected(BsSelectBoxOption(
+          value: typeModel.parentid,
+          text: Text(parseString(typeModel.parent.typenm))));
 
     typeid = parseString(typeModel.id);
     inputCode.text = parseString(typeModel.typecd);
@@ -68,7 +70,7 @@ class TypePresenter extends TypeFormSource {
 
   Future datatables(BuildContext context, Map<String, String> params) async {
     return await typeService.datatables(params).then((value) {
-      if(value.result!) {
+      if (value.result!) {
         typeSource.response = BsDatatableResponse.createFromJson(value.data);
         typeSource.onEditListener = (typeid) => edit(context, typeid);
         typeSource.onDeleteListener = (typeid) => delete(context, typeid);
@@ -82,13 +84,12 @@ class TypePresenter extends TypeFormSource {
     setLoading(false);
 
     showDialog(
-      context: context,
-      builder: (context) => TypeFormModal(
-        key: _formState,
-        presenter: this,
-        onSubmit: () => store(context),
-      )
-    );
+        context: context,
+        builder: (context) => TypeFormModal(
+              key: _formState,
+              presenter: this,
+              onSubmit: () => store(context),
+            ));
   }
 
   void store(BuildContext context) {
@@ -96,7 +97,7 @@ class TypePresenter extends TypeFormSource {
     typeService.store(getDatas()).then((res) {
       setLoading(false);
 
-      if(res.result!) {
+      if (res.result!) {
         Navigator.pop(context);
         typeSource.controller.reload();
       }
@@ -117,7 +118,7 @@ class TypePresenter extends TypeFormSource {
     );
 
     typeService.show(id).then((res) {
-      if(res.result!) {
+      if (res.result!) {
         setData(TypeModel.fromJson(res.data));
       }
     });
@@ -128,7 +129,7 @@ class TypePresenter extends TypeFormSource {
     typeService.update(id, getDatas()).then((res) {
       setLoading(false);
 
-      if(res.result!) {
+      if (res.result!) {
         Navigator.pop(context);
         typeSource.controller.reload();
       }
@@ -137,19 +138,17 @@ class TypePresenter extends TypeFormSource {
 
   void delete(BuildContext context, int id) {
     showDialog(
-      context: context,
-      builder: (context) => DialogConfirm(
-        onPressed: (value) {
-          if(value == DialogConfirmOption.YES_OPTION) {
-            typeService.delete(id).then((res) {
-              setLoading(false);
-              Navigator.pop(context);
-              typeSource.controller.reload();
-            });
-          }
-        },
-      )
-    );
+        context: context,
+        builder: (context) => DialogConfirm(
+              onPressed: (value) {
+                if (value == DialogConfirmOption.YES_OPTION) {
+                  typeService.delete(id).then((res) {
+                    setLoading(false);
+                    Navigator.pop(context);
+                    typeSource.controller.reload();
+                  });
+                }
+              },
+            ));
   }
-
 }
