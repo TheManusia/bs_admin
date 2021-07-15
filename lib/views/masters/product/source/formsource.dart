@@ -26,7 +26,7 @@ class ProductForm {
         disabled: presenter.isLoading,
         hintText: DBText.placeholderSelect(ProductText.formType),
         selectBoxController: presenter.selectTypeId,
-        serverSide: (params) => selectType(params, typeid: presenter.typeid),
+        serverSide: (params) => selectType(params),
       ),
     );
   }

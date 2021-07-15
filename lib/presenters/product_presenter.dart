@@ -139,7 +139,7 @@ class ProductPresenter extends ProductFormSource {
           value: productModel.typeid,
           text: Text(parseString(productModel.type.typenm))));
 
-    typeid = parseString(productModel.id);
+    typeid = parseString(productModel.type.id);
     inputCode.text = parseString(productModel.productcd);
     inputName.text = parseString(productModel.productnm);
     inputDescription.text = parseString(productModel.description);
