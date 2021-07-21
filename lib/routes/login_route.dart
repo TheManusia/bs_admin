@@ -1,5 +1,5 @@
 import 'package:bs_admin/routes.dart';
-import 'package:bs_admin/views/login/login.dart';
+import 'package:bs_admin/views/login/widget/login.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 

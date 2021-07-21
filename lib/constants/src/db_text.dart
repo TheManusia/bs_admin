@@ -51,6 +51,10 @@ class DBText {
     return ('Klik untuk pilih tanggal ${value.toLowerCase()}').trim();
   }
 
+  static String inputRequired(String value) {
+    return ('$value tidak boleh kosong');
+  }
+
   static String buttonEditTitle(String value) {
     return '$buttonEdit $value';
   }

@@ -1,5 +1,5 @@
 import 'package:bs_admin/constants/constants.dart';
-import 'package:bs_admin/presenters/type_presenter.dart';
+import 'package:bs_admin/presenters/masters/type_presenter.dart';
 import 'package:bs_admin/routes.dart';
 import 'package:bs_admin/routes/home_route.dart';
 import 'package:bs_admin/routes/masters/type_route.dart';

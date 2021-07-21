@@ -1,7 +1,7 @@
 import 'package:bs_admin/routes.dart';
+import 'package:bs_admin/utils/session.dart';
 import 'package:bs_admin/views/masters/product/widget/product.dart';
 import 'package:fluro/fluro.dart';
-import 'package:flutter/material.dart';
 
 class ProductRoute {
   static String routeKey = 'product';
@@ -10,9 +10,11 @@ class ProductRoute {
   static void routes(Routes router) {
     router.define(product,
         handler: Handler(
-          handlerFunc:
-              (BuildContext? context, Map<String, List<String>> params) =>
-                  ProductView(),
+          handlerFunc: (context, params) => Session(
+            builder: (context) async {
+              return ProductView();
+            },
+          ),
         ));
   }
 }

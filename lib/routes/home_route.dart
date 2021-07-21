@@ -11,7 +11,11 @@ class HomeRoute {
   static void routes(Routes router) {
     router.define(home, handler: Handler(
       handlerFunc: (context, parameters) {
-        return HomeView();
+        return Session(
+          builder: (context) async {
+            return HomeView();
+          },
+        );
       },
     ));
     router.define(homeSession,

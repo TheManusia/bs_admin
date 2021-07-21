@@ -1,5 +1,5 @@
 import 'package:bs_admin/helpers/helpers.dart';
-import 'package:bs_admin/models/type_model.dart';
+import 'package:bs_admin/models/masters/type_model.dart';
 import 'package:bs_admin/services/type_service.dart';
 import 'package:bs_admin/utils/utils.dart';
 import 'package:bs_admin/views/components/dialog_confirm.dart';

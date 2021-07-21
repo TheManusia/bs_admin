@@ -1,5 +1,5 @@
 import 'package:bs_admin/constants/constants.dart';
-import 'package:bs_admin/presenters/product_presenter.dart';
+import 'package:bs_admin/presenters/masters/product_presenter.dart';
 import 'package:bs_admin/views/masters/product/source/datasource.dart';
 import 'package:bs_flutter/bs_flutter.dart';
 import 'package:flutter/cupertino.dart';
